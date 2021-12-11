@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CronosYield.com - Smart Defi Investment Dapp with 5 Level Referral Program</title>
+    <meta property="og:title" content="CronosYield.com - Smart Defi Investment Dapp with 5 Level Referral Program">
+    <meta property="og:site_name" content="VVSMatrix">
+    <meta property="og:url" content="index.html">
+    <meta property="og:description" content="CronosYield.com is a Smart-Contract Based Investment Program built on Cronos Smart Chain which enables users to invest and get rewarded daily. ">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://og-image.xyz/og/CronosYield.com/Smart Defi Investment Dapp /CronosYield.com/https/menlo/unmatchedeclipse/{{h}}ffffff/data.png">
+    <!-- styles -->
+    <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" type="text/css" href="styles/reset.css">
+    <link href="../ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="styles/media.css">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+</head>
+<body class="body">
+<section class="first-screen">
+    <!-- header -->
+
+    <header class="header">
+        <div class="container-info">
+            <div class="container-header">
+                <a href="#" class="container-logo">
+                    <div class="logo">
+                        <img src="images/logo-1.png"  width=200 heighth=212 alt="logo"/>
+                    </div>
+                </a>
+                
+                <div class="header-contacts">
+                    <div class="container-btn-contacts">
+                        <button type="button" class="btn-contact connect" id="connectBtn">
+                            <span id="buttonConnectContent">Connect</span>
+                        </button>
+
+                    </div>
+
+                    <ul class="contact-list">
+                      <li class="item-list telegram">
+                        <a href="https://t.me/official_Cronos_Yield" target="_blank" class="item-link"></a>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-first-screen">
+        <div class="container-info">
+            <div class="container-info-screen">
+                <div class="screen-block">
+                    <div class="text-container">
+                        <h1 class="main-title">
+                            Stable & Profitable 
+                            Yield Farming Dapp on 
+                            <span>Cronos Smart Chain</span>
+                        </h1>
+                        <p class="sub-title-main">
+                            From 7.8 to <span>17% Daily ROI</span>
+                            <br><span>5 Levels</span> of Referral Rewards
+                        </p>
+                        <button type="button" class="pink-btn mobile-block" id="depositRouterButton">
+                            Deposit
+                        </button>
+                    </div>
+                </div>
+                <div class="screen-block right-screen">
+                    <div class="container-result">
+                        <div class="block-result">
+                            <p class="result" id="totalCurrencyInvested">0</p>
+                            <div class="sub-text-result">
+                                <span>Total</span>
+                                <span class="pink-text">VVS</span>
+                                <span class="bold-text">Invested</span>
+                            </div>
+                        </div>
+                        <div class="block-result">
+                            <p class="result" id="totalReferralReward">0</p>
+                            <div class="sub-text-result">
+                                 <span>Total Referral</span>
+                                 <span class="pink-text">VVS</span>
+                                <span class="bold-text">Reward</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- first section -->
+
+<section class="section-info">
+    <div class="calculate-block-container">
+        <div class="container-info">
+            <div class="header-section">
+                <h2 class="title-header" id="investmentSectionTitle">
+                    Calculate Profit
+                </h2>
+            </div>
+
+            <div class="container-calculate-info">
+                <div class="container-counter">
+                    <div class="deposit-block deposit">
+                        <h3 class="title-deposit">
+                            Deposit Period (days):
+                        </h3>
+                        <div class="container-slider" id="slider-container">
+                            <div class="container-slider-range" id="js-slider">
+                            </div>
+                            <ul id="tickmarks" class="datalist">
+                                <li>7</li>
+                                <!-- <li>20</li> -->
+                                <li>30</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="container-counter-amount">
+                        <div class="deposit-block">
+                            <h3 class="title-deposit amount-title">
+                                Deposit Amount:
+                            </h3>
+                            <div class="amount-field">
+                                <input type="number" id="depositAmount" class="amount-input" value="1000" min="0" />
+                                <button class="amount-field-button" id="maxAmountButton">Max</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-counter">
+                    <div class="container-footer-info">
+                        <ul class="list-info">
+                            <li class="item-info">
+                                <h4 class="title-info">
+                                    Daily ROI:
+                                </h4>
+                                <p id="dailyRoi">
+                                    13.80%
+                                </p>
+                            </li>
+                            <li class="item-info">
+                                <h4 class="title-info">
+                                    Total Profit:
+                                </h4>
+                                <p id="totalProfitPercent">
+                                    0%
+                                </p>
+                            </li>
+                            <li class="item-info">
+                                <h4 class="title-info">
+                                    In <span id="days">0</span> days
+                                    you will earn:
+                                </h4>
+                                <p class="pink-text">
+                                    <span id="profitCurrencyValue">107.2</span> <span>VVS</span>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <button type="button" class="pink-btn invest-btn" id="approveButton">Approve</button>
+                    <button type="button" class="pink-btn invest-btn" style="display: none;" id="investButton">Invest</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- second section -->
+
+<section class="dashboard-section">
+    <div class="dashboard-block-container">
+        <div class="container-info">
+            <div class="header-section">
+                <h2 class="title-header">
+                    Dashboard
+                </h2>
+            </div>
+
+            <div class="container-dashboard-info">
+                <div class="container-info-block">
+                    <ul class="list-dashboard">
+                        <li class="item-dashboard">
+                            <div>
+                                <h5 class="title-block-item">
+                                    Withdrawable (Divs+Refs)
+                                </h5>
+                                <p class="info-item">
+                                    <span id="toWithdraw">0</span>
+                                    <span class="pink-text">VVS</span>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="item-dashboard">
+                            <div>
+                                <h5 class="title-block-item">
+                                    Total Invested
+                                </h5>
+                                <p class="info-item">
+                                    <span id="investedByUser">0</span>
+                                    <span class="pink-text">VVS</span>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="item-dashboard">
+                            <div>
+                                <h5 class="title-block-item">
+                                    Total Withdrawal
+                                </h5>
+                                <p class="info-item">
+                                    <span id="withdrawalByUser">0</span>
+                                    <span class="pink-text">VVS</span>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="item-dashboard">
+                            <div>
+                                <h5 class="title-block-item">
+                                    Total Referral Reward
+                                </h5>
+                                <p class="info-item">
+                                    <span id="refRewardForUser">0</span>
+                                    <span class="pink-text">VVS</span>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                    <button type="button" class="pink-btn withdraw-btn" id="withdrawButton">Withdraw</button>
+                    <div class="container-footer-dashboard">
+                        <h3 class="title-footer-dashboard">
+                            Your Referral Link:
+                            <span id="refLink">You will get your ref link after investing</span>
+                            <button class="btn-copy" id="copyButton"></button>
+                            <span class="title-copy" id="copiedSuccessfully" style="display: none;">Copied successfully !</span>
+                        </h3>
+                        <ul class="list-footer">
+                            <li class="item-footer">
+                                <h3 class="title-level">
+                                    1 LVL
+                                </h3>
+                                <p class="info-level">
+                                    <span id="referralsCountAtLevel1">0</span> referrals
+                                </p>
+                                <p class="info-level">
+                                    5% Referral Rewards
+                                </p>
+                            </li>
+                            <li class="item-footer">
+                                <h3 class="title-level second-level">
+                                    2 LVL
+                                </h3>
+                                <p class="info-level">
+                                    <span id="referralsCountAtLevel2">0</span> referrals
+                                </p>
+                                <p class="info-level">
+                                    3% Referral Rewards
+                                </p>
+                            </li>
+                            <li class="item-footer">
+                                <h3 class="title-level three-level">
+                                    3 LVL
+                                </h3>
+                                <p class="info-level">
+                                    <span id="referralsCountAtLevel3">0</span> referrals
+                                </p>
+                                <p class="info-level">
+                                    2% Referral Rewards
+                                </p>
+                            </li>
+                            <li class="item-footer">
+                                <h3 class="title-level fourth-level">
+                                    4 LVL
+                                </h3>
+                                <p class="info-level">
+                                    <span id="referralsCountAtLevel4">0</span> referrals
+                                </p>
+                                <p class="info-level">
+                                    1% Referral Rewards
+                                </p>
+                            </li>
+                            <li class="item-footer">
+                                <h3 class="title-level fifth-level">
+                                    5 LVL
+                                </h3>
+                                <p class="info-level">
+                                    <span id="referralsCountAtLevel5">0</span> referrals
+                                </p>
+                                <p class="info-level">
+                                    0.5% Referral Rewards
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- footer -->
+
+<footer class="footer">
+    <div class="container-info">
+        <div class="container-footer-info">
+            <div class="mobile-flex">
+                <div class="container-logo-footer">
+                <span>
+                    © 2021
+                </span>
+                    <span class="logo-span">VVSMatrix</span>
+                </div>
+                <ul class="contact-list mobile-fade">
+                    <li class="item-list telegram">
+                        <a href="https://t.me/official_Cronos_Yield" target="_blank" class="item-link"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="container-footer-btn">
+                <button type="button" id="contractLink" class="pink-btn footer-btn-contact">Smart Contract</button>
+
+
+
+                <div class="container-list-contact">
+                   
+                    <button type="button" class="btn-contact faq-btn">
+                        <span>Faq</span>
+                    </button>
+                    <ul class="contact-list mobile-block-list">
+                        <li class="item-list telegram">
+                        <a href="https://t.me/official_Cronos_Yield" target="_blank" class="item-link"></a>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="image-social">
+                    <div class="br1"></div>
+                    <div class="br2"></div>
+                    <div class="br3"></div>
+                    <div class="br4"></div>
+                </div>
+    </div>
+</footer>
+
+<!-- popup windows -->
+
+<div class="wrapper-dark">
+    <div class="container-faq">
+        <div class="main-container-center">
+            <button type="button" class="close-window"></button>
+            <div class="faq-block">
+                <div class="window-header">
+                    <h2 class="title-window">
+                        FAQ
+                    </h2>
+                </div>
+                <div class="container-list-faq">
+                    <ul class="list-faq">
+                        <li class="item-faq">
+                            <div class="header-item-faq">
+                                <button type="button" class="close-faq-item"></button>
+                                <h3 class="title-faq-item">
+                                    How to participate in VVSMatrix? 
+                                </h3>
+                            </div>
+                            <div class="container-info-faq">
+                                <p>
+                                    VVSMatrix operates on the Cronos Smart Chain. In order to interact with the contract, you need to install the Metamask browser extension. An identical mobile application is also available for iPhone and Android users.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="item-faq">
+                            <div class="header-item-faq">
+                                <button type="button" class="close-faq-item"></button>
+                                <h3 class="title-faq-item">
+                                    Is the smart contract verified? 
+                                </h3>
+                            </div>
+                            <div class="container-info-faq">
+                                <p>
+                                    Yes, the smart contract is fully verified. No vulnerabilities, no backdoors, and no scam scripts have been found in the smart contract. VVSMatrix is safe for use in the Cronos Smart Chain main network. 
+                                </p>
+                            </div>
+                        </li>
+                        <li class="item-faq">
+                            <div class="header-item-faq">
+                                <button type="button" class="close-faq-item"></button>
+                                <h3 class="title-faq-item">
+                                    How to invest in VVSMatrix?
+                                </h3>
+                            </div>
+                            <div class="container-info-faq">
+                                <p>
+                                    Select the desired Deposit Period for your investment. Enter the amount of VVS you'd like to deposit. Click ‘Invest’. That's it. 
+                                </p>
+                            </div>
+                        </li>
+                        <li class="item-faq">
+                            <div class="header-item-faq">
+                                <button type="button" class="close-faq-item"></button>
+                                <h3 class="title-faq-item">
+                                    What is the difference between different Deposit Periods?
+                                </h3>
+                            </div>
+                            <div class="container-info-faq">
+                                <p>
+                                    The Deposit Period can vary from 7 to 30 days. Keep in mind that different Deposit Periods have different profitability between 119% and 234%. The longer your Deposit Period - the bigger the reward.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="item-faq">
+                            <div class="header-item-faq">
+                                <button type="button" class="close-faq-item"></button>
+                                <h3 class="title-faq-item">
+                                    Can I make multiple deposits? 
+                                </h3>
+                            </div>
+                            <div class="container-info-faq">
+                                <p>
+                                    Absolutely! There is no limit to the number of your deposits.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="item-faq">
+                            <div class="header-item-faq">
+                                <button type="button" class="close-faq-item"></button>
+                                <h3 class="title-faq-item">
+                                    Do you have a referral program?
+                                </h3>
+                            </div>
+                            <div class="container-info-faq">
+                                <p>
+                                    Yes, our referral program features 5 levels of referral rewards. For the friends that you invite, you receive a % of their deposits. Check the percentages for each level on our website. 
+                                </p>
+                            </div>
+                        </li>
+                        <li class="item-faq">
+                            <div class="header-item-faq">
+                                <button type="button" class="close-faq-item"></button>
+                                <h3 class="title-faq-item">
+                                    Where can I follow the latest news?
+                                </h3>
+                            </div>
+                            <div class="container-info-faq">
+                                <p>
+                                    Follow our social media channels where we publish all the latest updates.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container-news"> 
+        <button type="button" class="close-window"></button>
+        <div class="container-window">
+            <div class="header-window">
+<p style="text-decoration: underline;">
+                
+<br>
+✨ CronosYield.com 🚀🌕
+<br>
+Stable & Profitable Yield Farming Dapp on Cronos Smart Chain
+<br>
+✅ From 7.8 to 17% Daily ROI
+✅ 5 Levels of Referral Rewards
+✅ Fastest Growing ROI Project
+✅ Stable Contract Balance & Fair Terms
+<br>
+🔥 Referral Program 🔥<br>
+<br>
+1 lvl - 5%<br>
+2 lvl - 4%<br>
+3 lvl - 3%<br>
+4 lvl - 2%<br>
+5 lvl - 0.5%<br>
+<br>
+CronosYield.com is a Smart-Contract Based Investment Program built on Cronos Smart Chain which enables users to invest and get rewarded daily.<br>
+<br>
+What are you waiting for? START INVESTING & REFERRING!!<br> 
+<br>
+✨ CronosYield.com 🚀🌕<br>
+<br>
+Telegram Group: https://t.me/official_Cronos_Yield
+</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- warn windows -->
+
+<div class="warn-container" id="warn" >
+    <div class="container-info">
+        <div class="info-warn">
+            <h3 class="title-warn" id="warnTitleContent">
+                NEW RULES ON SITE
+            </h3>
+            <p id="warnMainContent">
+                Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam
+            </p>
+        </div>
+        <button type="button" class="btn-contact warn-btn">
+            OK
+        </button>
+    </div>
+</div>
+
+<div class="warn-container error-warn" id="warn1">
+    <div class="container-info">
+        <div class="info-warn">
+            <h3 class="title-warn" id="errorTitleContent">
+                ERROR!
+            </h3>
+            <p id="errorMainContent">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+            </p>
+        </div>
+        <button type="button" class="btn-contact warn-btn">
+            OK
+        </button>
+    </div>
+</div>
+<!-- scripts -->
+<script src="lib/jQuery_3.6.0.js"></script>
+<script type="text/javascript" src="../unpkg.com/web3%401.2.11/dist/web3.min.js"></script>
+<script type="text/javascript" src="../unpkg.com/web3modal%401.9.4/dist/index.js"></script>
+<script type="text/javascript" src="../unpkg.com/%40walletconnect/web3-provider%401.6.6/dist/umd/index.min.js"></script>
+<script src="../code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+<script src="lib/rxjs.min.js"></script>
+<script type="text/javascript" src="../cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+<script src="lib/jquery.numeric.js"></script>
+<script src="js/slider_drag.js"></script>
+<script src="abi/contract.abi.js"></script>
+<script src="abi/token.abi.js"></script>
+<script src="js/main.js"></script>
+<script src="js/subjects.js"></script>
+<script src="js/observables.js"></script>
+<script src="js/observers.js"></script>
+<script src="js/dapp.js"></script>
+</body>
+
+
+</html>
