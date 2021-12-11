@@ -13,7 +13,7 @@ const DEPOSIT_TOTAL_PROFIT_MIN = 119
 const DEPOSIT_INCREASING_STEP = 5
 const CURRENCY_DIGITS_AFTER_DOT = 4
 
-const MIN_VALUE = "5000000000000000000" // wei
+const MIN_VALUE = "500000000000000000000" // wei
 const TRANSACTION_FEE = ethers.utils.parseEther('1')
 const gasPrice = "5000"
 
