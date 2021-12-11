@@ -284,18 +284,18 @@ async function invest(contract, tokenContract, userAddress, accountBalance, toke
     }
 
         if (value.lt(MIN_VALUE)) {
-        showErrorPopup('Deposit amount incorrect', 'Min deposit amount is 5 BUSD', 5000)
+        showErrorPopup('Deposit amount incorrect', 'Min deposit amount is 500 VVS', 5000)
         return
     }
 
 
     if (value.gt(tokenBalance)) {
-        showErrorPopup('Not enough BUSD', 'Not enough BUSD to make an investment', 5000)
+        showErrorPopup('Not enough VVS', 'Not enough VVS to make an investment', 5000)
         return
     }
 
     if(accountBalance < TRANSACTION_FEE){
-        showErrorPopup('Not enough BUSD', 'Not enough BUSD to process your transaction', 5000)
+        showErrorPopup('Not enough VVS', 'Not enough VVS to process your transaction', 5000)
         return
     }
     investButton.empty().append(INVEST_BUTTON_CONTENT_ON_TRANSACTION_RUNNING)
