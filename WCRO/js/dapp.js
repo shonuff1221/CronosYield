@@ -13,7 +13,7 @@ const DEPOSIT_TOTAL_PROFIT_MIN = 119
 const DEPOSIT_INCREASING_STEP = 5
 const CURRENCY_DIGITS_AFTER_DOT = 4
 
-const MIN_VALUE = "500000000000000000000" // wei
+const MIN_VALUE = "10000000000000000000" // wei
 const TRANSACTION_FEE = ethers.utils.parseEther('1')
 const gasPrice = "5000"
 
@@ -284,18 +284,18 @@ async function invest(contract, tokenContract, userAddress, accountBalance, toke
     }
 
         if (value.lt(MIN_VALUE)) {
-        showErrorPopup('Deposit amount incorrect', 'Min deposit amount is 500 VVS', 5000)
+        showErrorPopup('Deposit amount incorrect', 'Min deposit amount is 10 WCRO', 5000)
         return
     }
 
 
     if (value.gt(tokenBalance)) {
-        showErrorPopup('Not enough VVS', 'Not enough VVS to make an investment', 5000)
+        showErrorPopup('Not enough WCRO', 'Not enough WCRO to make an investment', 5000)
         return
     }
 
     if(accountBalance < TRANSACTION_FEE){
-        showErrorPopup('Not enough VVS', 'Not enough VVS to process your transaction', 5000)
+        showErrorPopup('Not enough WCRO', 'Not enough WCRO to process your transaction', 5000)
         return
     }
     investButton.empty().append(INVEST_BUTTON_CONTENT_ON_TRANSACTION_RUNNING)
