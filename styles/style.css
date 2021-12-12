@@ -291,7 +291,21 @@ video{
     background-size: 16px 13px;
     background-position: center;
 }
-
+.WCRO .item-link {
+    background: url("../images/wcro_logo.png") no-repeat;
+    background-size: 35px 35px;
+    background-position: center;
+}
+.VVS .item-link {
+    background: url("../images/vvs_logo.png") no-repeat;
+    background-size: 35px 35px;
+    background-position: center;
+}
+.USDC .item-link {
+    background: url("../images/usdc_logo.png") no-repeat;
+    background-size: 35px 35px;
+    background-position: center;
+}
 .header-contacts {
     display: flex;
     align-items: center;
