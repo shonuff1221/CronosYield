@@ -251,7 +251,7 @@ function showRefLink (totalInvested, currentAccount) {
     if (totalInvested.eq(0)) {
         refLink.text('You will get your ref link after investing')
     } else {
-        const link = window.location.origin + '?ref=' + currentAccount
+        const link = window.location + '?ref=' + currentAccount
         refLink.text(link)
 
         fromEvent($('#copyButton'), 'click').pipe(takeUntil(merge(accountChangedSubject, walletChangedSubject))).subscribe(() => {
