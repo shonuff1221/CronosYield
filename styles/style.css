@@ -306,6 +306,11 @@ video{
     background-size: 35px 35px;
     background-position: center;
 }
+.CRONASWAP .item-link {
+    background: url("../images/cronaSwap_logo.png") no-repeat;
+    background-size: 35px 35px;
+    background-position: center;
+}
 .header-contacts {
     display: flex;
     align-items: center;
