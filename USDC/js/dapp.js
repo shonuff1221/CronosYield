@@ -1,10 +1,11 @@
+
 const fromEvent = rxjs.fromEvent
 const mergeMap = rxjs.mergeMap
 const map = rxjs.map
 const merge = rxjs.merge
 const timer = rxjs.timer
 
-const CONTRACT_ADDRESS = '0x3Ec7d7890C04640972CCc933aBf01315A7Fcf496'
+const CONTRACT_ADDRESS = '0x35E27E34De45324742193dd42a8E411439E4703a'
 const USDC_CONTRACT_ADDRESS = "0xc21223249CA28397B4B6541dfFaEcC539BfF0c59"
 const DEFAULT_REFERRAL = '0x1799dADA49693dA4aB9ec838aD29E00F704E8718'
 
@@ -13,7 +14,7 @@ const DEPOSIT_TOTAL_PROFIT_MIN = 119
 const DEPOSIT_INCREASING_STEP = 5
 const CURRENCY_DIGITS_AFTER_DOT = 4
 
-const MIN_VALUE = "5000000000000000000" // wei
+const MIN_VALUE = "5000000" // wei
 const TRANSACTION_FEE = ethers.utils.parseEther('1')
 const gasPrice = "5000"
 
@@ -38,7 +39,9 @@ function main () {
     walletChoosingObserver()
     checkUserChainId()
     showNews()
-    setInterval(showNews, 60000)// check if 10 min passed to show news again
+    setInterval(showNews, 60000)
+    setInterval(setGlobalStatisticsEvents,3000)
+    setInterval(setPersonalStatistics,3000)
 
     sliderObservable.subscribe(updateProfitByDepositPeriod)
     fromEvent(DEPOSIT_AMOUNT_INPUT, 'input').pipe(map(event => event.currentTarget.value)).subscribe(updateProfitByDepositAmount)
@@ -175,8 +178,8 @@ async function checkUserChainId() {
 async function setGlobalStatisticsEvents (contract) {
     const [invested, withdrawn, matchBonus] = await contract.contractInfo()
     console.log(invested, withdrawn, matchBonus)
-    $('#totalCurrencyInvested').text('$'+Math.round(formatCurrency(invested)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
-    $('#totalReferralReward').text('$'+Math.round(formatCurrency(matchBonus)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+    $('#totalCurrencyInvested').text('$'+Math.round((invested)/1000000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+    $('#totalReferralReward').text('$'+Math.round((matchBonus)/1000000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
 }
 
 function setPersonalStatisticsEvents (provider, contract, tokenContract, currentAccount) {
@@ -195,6 +198,7 @@ function setPersonalStatisticsEvents (provider, contract, tokenContract, current
         fromEvent($('#approveButton'), 'click').pipe(accountsChangedMerge).subscribe(() => approve(tokenContract, personalStatisticsSubscriber))
         fromEvent($('#investButton'), 'click').pipe(accountsChangedMerge).subscribe(() => invest(contract, tokenContract, currentAccount, bnbBalance, tokenBalance, personalStatisticsSubscriber))
         fromEvent($('#maxAmountButton'), 'click').pipe(accountsChangedMerge).subscribe(() => setMaxDepositAmount(tokenBalance))
+        return tokenBalance;
     })
 
     fromEvent($('#withdrawButton'), 'click').pipe(takeUntil(merge(accountChangedSubject, walletChangedSubject))).subscribe(() => withdraw(contract, personalStatisticsSubscriber))
@@ -218,10 +222,10 @@ function updatePersonalStatisticsDashboard(forWithdraw, totalInvested, totalWith
         approveButton.style.display = "none"
      }
  
-    $('#toWithdraw').text(formatCurrency(forWithdraw))
-    $('#investedByUser').text(formatCurrency(totalInvested))
-    $('#withdrawalByUser').text(formatCurrency(totalWithdrawn))
-    $('#refRewardForUser').text(formatCurrency(totalMatchBonus))
+    $('#toWithdraw').text((forWithdraw)/1000000)
+    $('#investedByUser').text((totalInvested)/1000000)
+    $('#withdrawalByUser').text((totalWithdrawn)/1000000)
+    $('#refRewardForUser').text((totalMatchBonus)/1000000)
 
     for (let i = 0; i < structure.length; i++) {
         $('#referralsCountAtLevel' + (i + 1)).text(structure[i])
@@ -275,21 +279,23 @@ async function requestAccounts (provider) {
 }
 
 async function invest(contract, tokenContract, userAddress, accountBalance, tokenBalance, dashboardObserver) {
+    
     const investButton = $('#investButton')
     const tariffId = $('#depositPeriodDays').text()
-    const value = ethers.utils.parseEther($('#depositAmount').val())
+    const value = Number.parseInt($('#depositAmount').val()*1000000)
+    console.log(value)
     const buttonStateObserver = {
         next: () => investButton.empty().append(INVEST_BUTTON_CONTENT_ON_TRANSACTION_RUNNING),
         complete: () => {investButton.attr("disabled", false); investButton.text(INVEST_BUTTON_CONTENT_ON_TRANSACTION_DONE)}
     }
 
-        if (value.lt(MIN_VALUE)) {
+    if (value < MIN_VALUE) {
         showErrorPopup('Deposit amount incorrect', 'Min deposit amount is 5 USDC', 5000)
         return
     }
 
 
-    if (value.gt(tokenBalance)) {
+    if (value > tokenBalance) {
         showErrorPopup('Not enough USDC', 'Not enough USDC to make an investment', 5000)
         return
     }
@@ -374,7 +380,10 @@ function withdraw (contract, dashboardObserver) {
 }
 
 function setMaxDepositAmount (tokenBalance) {
-    $('#depositAmount').val(formatCurrency(tokenBalance))
+    $('#depositAmount').val((tokenBalance/1000000))
+    console.log(tokenBalance+'token Balance')
+    return tokenBalance;
+    
 }
 function onAccountsChanged (currentAccount) {
     accountChangedSubject.next(1)
